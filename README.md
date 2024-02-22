@@ -7,12 +7,10 @@ Using the cheap SRF05 ultrasonic sensor and an Arduino Uno with a CAN Hat we can
 The Arduino code will poll all the sensors and send each sensors' measured distance in cm in byte frame format to the CAN BUS. <br>
 
 For measuring the distances we use a sonar technique to calculate the time of flight of the sound. <br>
-The SRF05 is very inaccurate for distance measurement but can be used as a cheap low level fail-safe system for proximity object detection.
-
+The SRF05 is very inaccurate for distance measurement but can be used as a cheap low level fail-safe system for proximity object detection.<br>
 The main benefits of using an array of sensors versus using one sensor and one servo to sweep is accuracy and no delay to measure positional distance of a huge area in front of the array. <br>
 Currently using an array of 3 sensors we can poll all of them several times per second without any interference. <br>
-Th code was successfully tested to communicate with 15 ultrasonic sensors. 
-
+The code was successfully tested to communicate with 15 ultrasonic sensors. 
 Source: [Ultrasound Sensor Array with the HC-SR04](https://www.hackster.io/user04650005/ultrasound-sensor-array-with-the-hc-sr04-f7108f)
 
 ## System
@@ -25,6 +23,8 @@ Source: [Ultrasound Sensor Array with the HC-SR04](https://www.hackster.io/user0
 The SRF05 sensors operate in Mode 2 (Single pin for both Trigger and Echo). <br>
 The brigded sensor pins can be connected to a as "FREE labled pin of the CAN HAT. <br>
 ![T](https://files.seeedstudio.com/wiki/CAN_BUS_Shield/image/PINMAP.png)
+![IMG_3472](https://github.com/DES-Team-02/pdc_sensor/assets/55065075/fcbf3a87-da73-4a66-a3c0-e0ecfaf33386)
+![IMG_3474](https://github.com/DES-Team-02/pdc_sensor/assets/55065075/806611ec-4c29-491b-982a-c9565f4800db)
 
 ## CAN Frame
 The maximum distance that can be measured is 400cm. <br> 
