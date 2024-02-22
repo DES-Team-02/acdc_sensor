@@ -7,24 +7,27 @@
 #define SONAR_NUM     3 // Number of sensors.
 #define MAX_DISTANCE 400 // Maximum distance (in cm) to ping.
 #define PING_INTERVAL 33 // Milliseconds between sensor pings (29ms is about the min to avoid cross-sensor echo).
-// can
+// can hat
 #define CAN_SAMPLE_RATE CAN_500KBPS   // CAN bus speed
-// pins 
 #define CAN_HAT_CS_PIN 9
-#define SENSOR_0_TRIG_PIN 7           
-#define SENSOR_0_ECHO_PIN 7
-#define SENSOR_1_TRIG_PIN 6
-#define SENSOR_1_ECHO_PIN 6
-#define SENSOR_2_TRIG_PIN 5
-#define SENSOR_2_ECHO_PIN 5
+// sensor pins - Note: Sensor Slligment out of driver's perspective & counting clockwise. 
+// FRONT LEFT SENSOR: CAN FRAME BYTE 0&1
+// FRONT MIDDLE SENSOR: CAN FRAME BYTE 2&3
+// FRONT RIGHT SENSOR: CAN FRAME BYTE 4&5
+#define SENSOR_FRONT_LEFT_TRIG_PIN 5           
+#define SENSOR_FRONT_LEFT_ECHO_PIN 5
+#define SENSOR_FRONT_MIDDLE_TRIG_PIN 6
+#define SENSOR_FRONT_MIDDLE_ECHO_PIN 6
+#define SENSOR_FRONT_RIGHT_TRIG_PIN 7
+#define SENSOR_FRONT_RIGHT_ECHO_PIN 7
 // sonar
 unsigned long pingTimer[SONAR_NUM];           // Holds the times when the next ping should happen for each sensor.
 unsigned short cm[SONAR_NUM];                 // Where the ping distances are stored.
 uint8_t currentSensor = 0;                    // Keeps track of which sensor is active.
 NewPing sonar[SONAR_NUM] = {                  // Sensor object array with each sensor's trigger pin, echo pin, and max distance to ping.
-  NewPing(SENSOR_0_TRIG_PIN, SENSOR_0_ECHO_PIN, MAX_DISTANCE), 
-  NewPing(SENSOR_1_TRIG_PIN, SENSOR_1_ECHO_PIN, MAX_DISTANCE), 
-  NewPing(SENSOR_2_TRIG_PIN, SENSOR_2_ECHO_PIN, MAX_DISTANCE), 
+  NewPing(SENSOR_FRONT_LEFT_TRIG_PIN, SENSOR_FRONT_LEFT_ECHO_PIN, MAX_DISTANCE), 
+  NewPing(SENSOR_FRONT_MIDDLE_TRIG_PIN, SENSOR_FRONT_MIDDLE_ECHO_PIN, MAX_DISTANCE), 
+  NewPing(SENSOR_FRONT_RIGHT_TRIG_PIN, SENSOR_FRONT_RIGHT_ECHO_PIN, MAX_DISTANCE), 
 };
 // can 
 const unsigned long can_id = 0x200;             // CAN Device address

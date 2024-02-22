@@ -30,12 +30,12 @@ The brigded sensor pins can be connected to a as "FREE labled pin of the CAN HAT
 The maximum distance that can be measured is 400cm. <br> 
 Therfore we need 2 bytes in the CAN frames' payload for each sensor. <br>
 The can frame is structured as follows: <br>
-
-Byte 0 - 1: Sensor 0 <br>
-Byte 2 - 3: Sensor 1 <br>
-Byte 4 - 5: Sensor 2 <br>
-
-```bash 
+Byte 0 - 1: FRONT LEFT SENSOR <br>
+Byte 2 - 3: FRONT MIDDLE SENSOR <br>
+Byte 4 - 5: FRONT RIGHT SENSOR <br>
+The distance value in cm are displayed and sent in hex format. <br>
+Example: <br>
+```c
 Set data from ID: 0x200
 0	A3	0	8	0	A4	
 -----------------------------
