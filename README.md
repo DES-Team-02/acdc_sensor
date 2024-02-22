@@ -22,9 +22,9 @@ Source: [Ultrasound Sensor Array with the HC-SR04](https://www.hackster.io/user0
 ### Wiring
 The SRF05 sensors operate in Mode 2 (Single pin for both Trigger and Echo). <br>
 The brigded sensor pins can be connected to a as "FREE labled pin of the CAN HAT. <br>
-![T](https://files.seeedstudio.com/wiki/CAN_BUS_Shield/image/PINMAP.png)
-![IMG_3472](https://github.com/DES-Team-02/pdc_sensor/assets/55065075/fcbf3a87-da73-4a66-a3c0-e0ecfaf33386)
-![IMG_3474](https://github.com/DES-Team-02/pdc_sensor/assets/55065075/806611ec-4c29-491b-982a-c9565f4800db)
+<img src="https://files.seeedstudio.com/wiki/CAN_BUS_Shield/image/PINMAP.png" alt="drawing" style="width:500px;"/>
+<img src="https://github.com/DES-Team-02/pdc_sensor/assets/55065075/fcbf3a87-da73-4a66-a3c0-e0ecfaf33386" alt="drawing" style="width:500px;"/>
+<img src="https://github.com/DES-Team-02/pdc_sensor/assets/55065075/806611ec-4c29-491b-982a-c9565f4800db" alt="drawing" style="width:500px;"/>
 
 ## CAN Frame
 The maximum distance that can be measured is 400cm. <br> 
