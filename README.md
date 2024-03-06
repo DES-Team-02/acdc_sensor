@@ -1,4 +1,4 @@
-# Ultrasound Sensor Array for Park Distance Control
+# Ultrasound Sensor Array for Automatic Car Distance Control (AC⚡️DC)
 Ultrasound Sensor Array with the SRF05 Sensors, Arduino Nano and Seeed CAN-BUS Shield V2.0. <br>
 Estimate distance of solid objects using multiple low-cost ultrasound sensors. <br>
 
