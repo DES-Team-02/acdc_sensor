@@ -4,7 +4,7 @@
 
 #define BAUD_RATE 115200 // Serial baud rate
 #define SONAR_NUM 3 // Number of ultrasonic sensors.
-#define MAX_DISTANCE 400 // Maximum distance (in cm) that can be measured.
+#define MAX_DISTANCE 200 // Maximum distance (in cm) that can be measured.
 #define CAN_SAMPLE_RATE CAN_500KBPS // CAN bus speed
 #define CAN_HAT_CS_PIN 9 // Pin number for the CAN controller chip select
 
@@ -20,6 +20,8 @@ unsigned short cm[SONAR_NUM]; // Array to store distances measured by sensors.
 uint8_t data_buf[SONAR_NUM * 2]; // Data buffer for CAN message
 const unsigned long can_id = 0x200; // CAN device address
 mcp2515_can CAN(CAN_HAT_CS_PIN); // CAN bus object
+float temp = 25; // Temperature of air
+float factor = sqrt(1 + temp / 273.15) / 60.368; // Factor to convert milliseconds to distance
 
 // Ultrasonic sensor objects
 NewPing sonar[SONAR_NUM] = {
@@ -40,16 +42,7 @@ void setup() {
 }
 
 void loop() {
-  triggerSensors();
-  delay(100); // Delay to allow for sensor echo returns
   oneSensorCycle();
-  delay(50); // Delay between readings
-}
-
-void triggerSensors() {
-  for (uint8_t i = 0; i < SONAR_NUM; i++) {
-    sonar[i].ping(); // Trigger each sensor to start measurement
-  }
 }
 
 void oneSensorCycle() { 
@@ -77,6 +70,6 @@ void oneSensorCycle() {
 
 void readSensors() {
   for (uint8_t i = 0; i < SONAR_NUM; i++) {
-    cm[i] = sonar[i].ping_cm(); // Read distance from each sensor and store it in the cm array
+    cm[i] = (short)(sonar[i].ping_median(3, MAX_DISTANCE) * factor); // Read distance from each sensor and store it in the cm array
   }
 }
