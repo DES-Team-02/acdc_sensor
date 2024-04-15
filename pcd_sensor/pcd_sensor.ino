@@ -4,6 +4,7 @@
 
 #define BAUD_RATE 115200 // Serial baud rate
 #define SONAR_NUM 3 // Number of ultrasonic sensors.
+#define MEASURE_ITERATION 3 // Number of measuring iterations for each sensor.
 #define MAX_DISTANCE 200 // Maximum distance (in cm) that can be measured.
 #define CAN_SAMPLE_RATE CAN_500KBPS // CAN bus speed
 #define CAN_HAT_CS_PIN 9 // Pin number for the CAN controller chip select
@@ -43,6 +44,7 @@ void setup() {
 
 void loop() {
   oneSensorCycle();
+  delay(100);
 }
 
 void oneSensorCycle() { 
@@ -70,6 +72,6 @@ void oneSensorCycle() {
 
 void readSensors() {
   for (uint8_t i = 0; i < SONAR_NUM; i++) {
-    cm[i] = (short)(sonar[i].ping_median(3, MAX_DISTANCE) * factor); // Read distance from each sensor and store it in the cm array
+    cm[i] = (short)(sonar[i].ping_median(MEASURE_ITERATION, MAX_DISTANCE) * factor); // Read distance from each sensor and store it in the cm array
   }
 }
